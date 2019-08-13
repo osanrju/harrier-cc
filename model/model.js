@@ -283,6 +283,14 @@ module.exports = () => {
 
     delTable: async (restaurantId, tableId) => {
       var waiterId = client.hget('table:' + tableId, 'waiter')
+      if (!await isRestaurantValid(restaurantId)) {
+        return { error: 'Not a valid restaurant' }
+      }
+
+      if (!await isTableValid(restaurantId, tableId)) {
+        return { error: 'Not a valid Table' }
+      }
+
       if (waiterId) {
         client.srem('restaurant:' + restaurantId + ':waiter:' + waiterId, tableId)
       }
@@ -317,7 +325,7 @@ module.exports = () => {
           client.hdel('table:' + tables[tIndex], 'waiter')
         }
         client.del('restaurant:' + restaurants[index] + ':waiter:' + waiterId)
-        await client.del('waiter:' + waiterId + ':messages')
+        await client.del('waiter:' + waiterId)
 
         return { msg: 'Waiter ' + waiterId + ' has been removed' }
       }

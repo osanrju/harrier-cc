@@ -6,7 +6,6 @@
     "start": "node ./bin/www",
     "test": "jest --forceExit --detectOpenHandles --verbose",
     "apidoc": "apidoc -i ./routes/ -o public/"
-
   },
   "dependencies": {
     "async-redis": "^1.1.7",
