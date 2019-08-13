@@ -20,7 +20,7 @@ router.get('/loadDefaults', asyncmw(async (req, res, next) => {
 }))
 
 /**
- * @api {post} /admin/addRestaurant Add a restuarant
+ * @api {post} /admin/addRestaurant Add a restaurant
  * @apiName addRestaurant
  * @apiGroup admin
  *
