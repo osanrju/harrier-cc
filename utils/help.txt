@@ -1,0 +1,16 @@
+-- Curl commands to test
+
+- post request * add a restaurant
+curl -d "name=Restaurant 3" -X POST http://localhost:3000/admin/addRestaurant
+
+- Put request * to assign a waiter to a table
+curl -X PUT http://localhost:3000/manager/restaurant/1/table/19/waiter/1
+
+- post request * add a table
+curl -d "name=Table x" -d "rid=3" -X POST http://localhost:3000/admin/addTable
+
+- Delete requets * remove a table
+curl -X DELETE http://localhost:3000/admin/1/removeTable/1
+
+- Post request * Add a user
+curl -d "name=Bob" -X POST http://localhost:3000/admin/addWaiter
